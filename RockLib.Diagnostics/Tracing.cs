@@ -1,5 +1,5 @@
-﻿using RockLib.Configuration;
-using RockLib.Configuration.ObjectFactory;
+﻿using Microsoft.Extensions.Configuration;
+using RockLib.Configuration;
 using RockLib.Immutable;
 using RockLib.Threading;
 using System;
@@ -33,6 +33,13 @@ namespace RockLib.Diagnostics
         /// and <see cref="GetTraceSource(string)"/> methods.
         /// </summary>
         /// <exception cref="ArgumentNullException">If set to null.</exception>
+        /// <remarks>
+        /// The default value for this property is created by taking the value of <see cref="Config.Root"/>,
+        /// calling <see cref="IConfiguration.GetSection(string)"/> method on it with the name
+        /// <see cref="DiagnosticsSectionName"/>, and applying the
+        /// <see cref="ConfigurationExtensions.CreateDiagnosticsSettings(IConfiguration)"/>
+        /// extension method to the sub-section.
+        /// </remarks>
         public static DiagnosticsSettings Settings
         {
             get => _settings.Value;
@@ -90,6 +97,6 @@ namespace RockLib.Diagnostics
         }
 
         private static DiagnosticsSettings GetDefaultDiagnosticsSettings() =>
-            Config.Root.GetSection(DiagnosticsSectionName).Create<DiagnosticsSettings>();
+            Config.Root.GetSection(DiagnosticsSectionName).CreateDiagnosticsSettings();
     }
 }
