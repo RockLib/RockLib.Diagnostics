@@ -49,22 +49,37 @@ The type of the `Tracing.Settings` property, `DiagnosticsSettings`, has two prop
 This property may be explicitly set at the beginning of an application. However, it cannot be set once already in use.
 
 ```c#
-static void Main(string[] args)
-{
-    Tracing.Settings = new DiagnosticsSettings(
-        trace: new TraceSettings(
-            autoFlush:false,    // These are
-            indentSize:4,       // the default
-            useGlobalLock:true, // values.
-            listeners: new System.Diagnostics.TraceListener[]
-            {
-                // TODO: instantiate TraceListener objects
-            }),
-        sources: new System.Diagnostics.TraceSource[]
+Tracing.Settings = new DiagnosticsSettings(
+    trace: new TraceSettings(
+        autoFlush: false,    // These are
+        indentSize: 4,       // the default
+        useGlobalLock: true, // values.
+        listeners: new System.Diagnostics.TraceListener[]
         {
-            // TODO: instantiate TraceSource objects
-        });
-}
+            new System.Diagnostics.DefaultTraceListener
+            {
+                Name = "my_trace_listener",
+                LogFileName = "my_trace_listener.log"
+            }
+        }),
+    sources: new System.Diagnostics.TraceSource[]
+    {
+        new System.Diagnostics.TraceSource(name: "my_trace_source")
+        {
+            Switch = new System.Diagnostics.SourceSwitch(name: "my_trace_source_switch")
+            {
+                Level = System.Diagnostics.SourceLevels.Verbose
+            },
+            Listeners =
+            {
+                new System.Diagnostics.DefaultTraceListener
+                {
+                    Name = "my_trace_source_listener",
+                    LogFileName = "my_trace_source_listener.log"
+                }
+            }
+        }
+    });
 ```
 
 When not set explicitly, the `Settings` property value is automatically obtained as follows:
@@ -75,7 +90,7 @@ RockLib.Configuration.Config.Root
     .CreateDiagnosticsSettings() // Extension method from RockLib.Diagnostics.ConfigurationExtensions
 ```
 
-The `appsettings.json` file for an app with its Tracing automatically configured looks like this:
+The `appsettings.json` file for an app with its Tracing automatically configured looks like this (note that this configuration and the programmatic example above produce the same settings):
 
 ```json
 {
@@ -84,13 +99,22 @@ The `appsettings.json` file for an app with its Tracing automatically configured
             "autoFlush": false,
             "indentSize": 4,
             "useGlobalLock": true,
-            "listeners": [
-                // TODO: configure TraceListener objects
-            ]
+            "listeners": {
+                "name": "my_trace_listener",
+                "logFileName": "my_trace_listener.log"
+            }
         },
-        "sources": [
-            // TODO: configure TraceSource objects
-        ]
+        "sources": {
+            "name": "my_trace_source",
+            "switch": {
+                "name": "my_trace_source_switch",
+                "level": "All"
+            },
+            "listeners": {
+                "name": "my_trace_source_listener",
+                "logFileName": "my_trace_source_listener.log"
+            }
+        }
     }
 }
 
