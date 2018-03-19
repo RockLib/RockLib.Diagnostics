@@ -95,3 +95,15 @@ The `appsettings.json` file for an app with its Tracing automatically configured
 }
 
 ```
+
+#### ASP.NET Core Applications
+
+In order to enable tracing automatically from configuration, ASP.NET Core applications need be sure to call `RockLib.Configuration.Config.SetCurrent(Microsoft.Extensions.Configuration.IConfiguration)` from their `Startup` class's constructor.
+
+```c#
+public Startup(IConfiguration configuration)
+{
+    Configuration = configuration;
+    Config.SetRoot(Configuration);
+}
+```
