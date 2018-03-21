@@ -87,10 +87,23 @@ When not set explicitly, the `Settings` property value is automatically obtained
 ```c#
 RockLib.Configuration.Config.Root
     .GetSection(RockLib.Diagnostics.Tracing.DiagnosticsSectionName)
-    .CreateDiagnosticsSettings() // Extension method from RockLib.Diagnostics.ConfigurationExtensions
+    .CreateDiagnosticsSettings()
 ```
 
-The `appsettings.json` file for an app with its Tracing automatically configured looks like this (note that this configuration and the programmatic example above produce the same settings):
+The `CreateDiagnosticsSettings` extension method looks like this:
+
+```c#
+var defaultTypes = new DefaultTypes
+{
+    { typeof(TraceListener), typeof(DefaultTraceListener) },
+    { typeof(TraceFilter), typeof(EventTypeFilter) }
+};
+return configuration.Create<DiagnosticsSettings>(defaultTypes);
+```
+
+See the [RockLib.Configuration.ObjectFactory](https://github.com/RockLib/RockLib.Configuration/tree/develop/RockLib.Configuration.ObjectFactory) project for details on config formatting.
+
+An `appsettings.json` file for an app with its Tracing automatically configured might look like this (note that this configuration and the programmatic example above produce the same settings):
 
 ```json
 {
