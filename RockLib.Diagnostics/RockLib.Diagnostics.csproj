@@ -21,6 +21,10 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\RockLib.Diagnostics.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
+    <DefineConstants>NETSTANDARD1_6</DefineConstants>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="RockLib.Configuration" Version="2.0.0" />
     <PackageReference Include="RockLib.Configuration.ObjectFactory" Version="1.1.1" />
