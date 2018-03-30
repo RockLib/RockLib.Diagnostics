@@ -38,21 +38,24 @@ namespace RockLib.Diagnostics
         {
             if (NeedIndent)
                 WriteIndent();
-            try
+
+            if (!string.IsNullOrWhiteSpace(LogFileName))
             {
-                using (var stream = new FileInfo(LogFileName).Open(FileMode.OpenOrCreate))
-                using (var streamWriter = new StreamWriter(stream))
+                try
                 {
-                    stream.Position = stream.Length;
-                    if (useWriteLine)
-                        streamWriter.WriteLine(message);
-                    else
-                        streamWriter.Write(message);
+                    using (var stream = new FileInfo(LogFileName).Open(FileMode.OpenOrCreate))
+                    using (var streamWriter = new StreamWriter(stream))
+                    {
+                        stream.Position = stream.Length;
+                        if (useWriteLine)
+                            streamWriter.WriteLine(message);
+                        else
+                            streamWriter.Write(message);
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"An exception occurred writing trace output to log file '{LogFileName}'. {ex}");
+                catch
+                {
+                }
             }
         }
     }
