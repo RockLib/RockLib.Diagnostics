@@ -5,11 +5,27 @@ VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics", "RockLib.Diagnostics\RockLib.Diagnostics.csproj", "{69B6A78E-8734-4C10-AEEA-FCC5C5E45CFE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.ConfigTests", "RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.csproj", "{33002261-2E90-4158-A870-7635EBC17C44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.UnitTests.netcoreapp2.0", "RockLib.Diagnostics.UnitTests\netcoreapp2.0\RockLib.Diagnostics.UnitTests.netcoreapp2.0.csproj", "{DE66FC2C-CAC9-42E2-B855-63B101EA9B81}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.UnitTests", "RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.csproj", "{6C9AA8DF-0D36-464E-9042-43B6B1672B48}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RockLib.Diagnostics.UnitTests", "RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.shproj", "{3FF67F13-C58E-4511-AF51-8D02AA779112}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.UnitTests.net462", "RockLib.Diagnostics.UnitTests\net462\RockLib.Diagnostics.UnitTests.net462.csproj", "{8AA76477-3CFE-4200-9C62-705F80E535AB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.UnitTests.netcoreapp1.1", "RockLib.Diagnostics.UnitTests\netcoreapp1.1\RockLib.Diagnostics.UnitTests.netcoreapp1.1.csproj", "{7AD829F6-B473-41B7-8EA9-7F7D6EB3E928}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RockLib.Diagnostics.ConfigTests", "RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.shproj", "{7197572B-9CAA-4F88-BFDD-C616BCDF4C5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.ConfigTests.net462", "RockLib.Diagnostics.ConfigTests\net462\RockLib.Diagnostics.ConfigTests.net462.csproj", "{C10720E1-9402-4D35-9DB3-0D877AD8D0F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.ConfigTests.netcoreapp1.1", "RockLib.Diagnostics.ConfigTests\netcoreapp1.1\RockLib.Diagnostics.ConfigTests.netcoreapp1.1.csproj", "{20CFCAFC-3EA4-43CC-97BC-B71435E3D186}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.ConfigTests.netcoreapp2.0", "RockLib.Diagnostics.ConfigTests\netcoreapp2.0\RockLib.Diagnostics.ConfigTests.netcoreapp2.0.csproj", "{92266BE7-7773-4E2B-9B9A-8D814725E62C}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.projitems*{3ff67f13-c58e-4511-af51-8d02aa779112}*SharedItemsImports = 13
+		RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.projitems*{7197572b-9caa-4f88-bfdd-c616bcdf4c5a}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -19,14 +35,30 @@ Global
 		{69B6A78E-8734-4C10-AEEA-FCC5C5E45CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69B6A78E-8734-4C10-AEEA-FCC5C5E45CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69B6A78E-8734-4C10-AEEA-FCC5C5E45CFE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33002261-2E90-4158-A870-7635EBC17C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33002261-2E90-4158-A870-7635EBC17C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33002261-2E90-4158-A870-7635EBC17C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33002261-2E90-4158-A870-7635EBC17C44}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C9AA8DF-0D36-464E-9042-43B6B1672B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C9AA8DF-0D36-464E-9042-43B6B1672B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C9AA8DF-0D36-464E-9042-43B6B1672B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C9AA8DF-0D36-464E-9042-43B6B1672B48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE66FC2C-CAC9-42E2-B855-63B101EA9B81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE66FC2C-CAC9-42E2-B855-63B101EA9B81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE66FC2C-CAC9-42E2-B855-63B101EA9B81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE66FC2C-CAC9-42E2-B855-63B101EA9B81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA76477-3CFE-4200-9C62-705F80E535AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA76477-3CFE-4200-9C62-705F80E535AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA76477-3CFE-4200-9C62-705F80E535AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA76477-3CFE-4200-9C62-705F80E535AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD829F6-B473-41B7-8EA9-7F7D6EB3E928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD829F6-B473-41B7-8EA9-7F7D6EB3E928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD829F6-B473-41B7-8EA9-7F7D6EB3E928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD829F6-B473-41B7-8EA9-7F7D6EB3E928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C10720E1-9402-4D35-9DB3-0D877AD8D0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C10720E1-9402-4D35-9DB3-0D877AD8D0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C10720E1-9402-4D35-9DB3-0D877AD8D0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C10720E1-9402-4D35-9DB3-0D877AD8D0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20CFCAFC-3EA4-43CC-97BC-B71435E3D186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20CFCAFC-3EA4-43CC-97BC-B71435E3D186}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20CFCAFC-3EA4-43CC-97BC-B71435E3D186}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20CFCAFC-3EA4-43CC-97BC-B71435E3D186}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92266BE7-7773-4E2B-9B9A-8D814725E62C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92266BE7-7773-4E2B-9B9A-8D814725E62C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92266BE7-7773-4E2B-9B9A-8D814725E62C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92266BE7-7773-4E2B-9B9A-8D814725E62C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

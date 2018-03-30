@@ -4,6 +4,9 @@ using RockLib.Diagnostics;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xunit;
+#if NETCOREAPP1_1
+using DefaultTraceListener = RockLib.Diagnostics.DefaultTraceListener;
+#endif
 
 public class TheCreateDiagnosticsSettingsExtensionMethod
 {
@@ -14,7 +17,7 @@ public class TheCreateDiagnosticsSettingsExtensionMethod
             .AddInMemoryCollection(new Dictionary<string, string>
             {
                 { "trace:autoFlush", "true" },
-                { "trace:listeners:type", "System.Diagnostics.DefaultTraceListener, System.Diagnostics.TraceSource" },
+                { "trace:listeners:type", typeof(DefaultTraceListener).AssemblyQualifiedName },
                 { "trace:listeners:value:name", "listener1" },
                 { "trace:listeners:value:logFileName", "listener1.log" },
                 { "trace:listeners:value:filter:type", "System.Diagnostics.EventTypeFilter, System.Diagnostics.TraceSource" },
@@ -22,7 +25,7 @@ public class TheCreateDiagnosticsSettingsExtensionMethod
                 { "sources:name", "source1" },
                 { "sources:switch:name", "sourceSwitch1" },
                 { "sources:switch:level", "Error" },
-                { "sources:listeners:type", "System.Diagnostics.DefaultTraceListener, System.Diagnostics.TraceSource" },
+                { "sources:listeners:type", typeof(DefaultTraceListener).AssemblyQualifiedName },
                 { "sources:listeners:value:name", "listener2" },
                 { "sources:listeners:value:logFileName", "listener2.log" },
                 { "sources:listeners:value:filter:type", "System.Diagnostics.EventTypeFilter, System.Diagnostics.TraceSource" },
@@ -65,7 +68,7 @@ public class TheCreateDiagnosticsSettingsExtensionMethod
             .AddInMemoryCollection(new Dictionary<string, string>
             {
                 { "trace:autoFlush", "true" },
-                { "trace:listeners:type", "System.Diagnostics.DefaultTraceListener, System.Diagnostics.TraceSource" },
+                { "trace:listeners:type", typeof(DefaultTraceListener).AssemblyQualifiedName },
                 { "trace:listeners:name", "listener1" },
                 { "trace:listeners:logFileName", "listener1.log" },
                 { "trace:listeners:filter:type", "System.Diagnostics.EventTypeFilter, System.Diagnostics.TraceSource" },
@@ -115,14 +118,14 @@ public class TheCreateDiagnosticsSettingsExtensionMethod
             .AddInMemoryCollection(new Dictionary<string, string>
             {
                 { "trace:autoFlush", "true" },
-                { "trace:listeners:type", "System.Diagnostics.DefaultTraceListener, System.Diagnostics.TraceSource" },
+                { "trace:listeners:type", typeof(DefaultTraceListener).AssemblyQualifiedName },
                 { "trace:listeners:value:name", "listener1" },
                 { "trace:listeners:value:logFileName", "listener1.log" },
                 { "trace:listeners:value:filter:level", "Warning" },
                 { "sources:name", "source1" },
                 { "sources:switch:name", "sourceSwitch1" },
                 { "sources:switch:level", "Error" },
-                { "sources:listeners:type", "System.Diagnostics.DefaultTraceListener, System.Diagnostics.TraceSource" },
+                { "sources:listeners:type", typeof(DefaultTraceListener).AssemblyQualifiedName },
                 { "sources:listeners:value:name", "listener2" },
                 { "sources:listeners:value:logFileName", "listener2.log" },
                 { "sources:listeners:value:filter:level", "Critical" },

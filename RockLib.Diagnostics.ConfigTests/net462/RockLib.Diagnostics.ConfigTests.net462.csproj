@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
-
+    <TargetFramework>net462</TargetFramework>
+    <AssemblyName>RockLib.Diagnostics.ConfigTests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RockLib.Diagnostics\RockLib.Diagnostics.csproj" />
+    <ProjectReference Include="..\..\RockLib.Diagnostics\RockLib.Diagnostics.csproj" />
   </ItemGroup>
+
+  <Import Project="..\RockLib.Diagnostics.ConfigTests.projitems" Label="Shared" />
 
 </Project>
