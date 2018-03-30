@@ -12,9 +12,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)Tracing\CustomTraceListener.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tracing\SettingsTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)appsettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 </Project>

@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>RockLib.Diagnostics.ConfigTests</AssemblyName>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -15,6 +14,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\RockLib.Diagnostics\RockLib.Diagnostics.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Import Project="..\RockLib.Diagnostics.ConfigTests.projitems" Label="Shared" />
