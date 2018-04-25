@@ -1,6 +1,6 @@
 # RockLib.Diagnostics [![Build status](https://ci.appveyor.com/api/projects/status/9gra3aiyh2bb8rob?svg=true)](https://ci.appveyor.com/project/bfriesen/rocklib-diagnostics)
 
-_Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework._
+*Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.*
 
 ```powershell
 PM> Install-Package RockLib.Diagnostics
@@ -18,7 +18,7 @@ The static `RockLib.Diagnostics.Tracing` class has two methods, `ConfigureTrace(
 
 ### Tracing.ConfigureTrace
 
-All classes that write trace messages using the `System.Diagnostics.Trace` class should make a call to `RockLib.Diagnostics.Tracing.ConfigureTrace()` in their static constructor. It ensures that `Trace` has its `AutoFlush`, `IndentSize`, `UseGlobalLock`, and `Listeners` properties configured according to the `Tracing.Settings` property. Note that this method is thread-safe and can be called multiple timmes (only the first time calling it has any effect however).
+All classes that write trace messages using the `System.Diagnostics.Trace` class should make a call to `RockLib.Diagnostics.Tracing.ConfigureTrace()` in their static constructor. It ensures that `Trace` has its `AutoFlush`, `IndentSize`, `UseGlobalLock`, and `Listeners` properties configured according to the `Tracing.Settings` property. Note that this method is thread-safe and can be called multiple times (only the first time calling it has any effect however).
 
 ```c#
 using RockLib.Diagnostics;
