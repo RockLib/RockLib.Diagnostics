@@ -1,4 +1,4 @@
-# RockLib.Diagnostics [![Build status](https://ci.appveyor.com/api/projects/status/9gra3aiyh2bb8rob?svg=true)](https://ci.appveyor.com/project/bfriesen/rocklib-diagnostics)
+# RockLib.Diagnostics [![Build status](https://ci.appveyor.com/api/projects/status/k7ojdrc1mwifri96?svg=true)](https://ci.appveyor.com/project/RockLib/rocklib-diagnostics)
 
 *Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.*
 
