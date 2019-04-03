@@ -21,6 +21,12 @@ namespace RockLib.Diagnostics
         /// </summary>
         public const string DiagnosticsSectionName = "rocklib.diagnostics";
 
+        /// <summary>
+        /// Defines the underscore based name of the section underneath <see cref="Config.Root"/> that determine the default value
+        /// of the <see cref="Settings"/> property.
+        /// </summary>
+        public const string DiagnosticsUnderscoreSectionName = "rocklib_diagnostics";
+
         private static readonly SoftLock _configureTraceLock = new SoftLock();
 
         private static readonly ConcurrentDictionary<string, TraceSource> _traceSources = new ConcurrentDictionary<string, TraceSource>();
@@ -97,6 +103,6 @@ namespace RockLib.Diagnostics
         }
 
         private static DiagnosticsSettings GetDefaultDiagnosticsSettings() =>
-            Config.Root.GetSection(DiagnosticsSectionName).CreateDiagnosticsSettings();
+            Config.Root.GetCompositeSection(DiagnosticsUnderscoreSectionName, DiagnosticsSectionName).CreateDiagnosticsSettings();
     }
 }
