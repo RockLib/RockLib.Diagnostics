@@ -7,12 +7,14 @@
   <PropertyGroup>
     <PackageId>RockLib.Diagnostics</PackageId>
     <PackageVersion>1.0.2</PackageVersion>
-    <Authors>Brian Friesen</Authors>
+    <Authors>RockLib</Authors>
     <Description>Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Copyright>Copyright 2018 (c) Quicken Loans Corporation. All rights reserved.</Copyright>
-    <PackageTags>Trace TraceSource Configuration</PackageTags>
+    <PackageProjectUrl>https://github.com/RockLib/RockLib.Diagnostics</PackageProjectUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Copyright>Copyright 2018-2020 (c) Quicken Loans Corporation. All rights reserved.</Copyright>
+    <PackageTags>RockLib Trace TraceSource Configuration</PackageTags>
     <Version>1.0.1</Version>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
@@ -20,6 +22,10 @@
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\RockLib.Diagnostics.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
     <DefineConstants>NETSTANDARD1_6</DefineConstants>
