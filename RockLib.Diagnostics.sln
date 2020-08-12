@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics", "RockLib.Diagnostics\RockLib.Diagnostics.csproj", "{69B6A78E-8734-4C10-AEEA-FCC5C5E45CFE}"
 EndProject
@@ -23,8 +23,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RockLib.Diagnostics.ConfigT
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.projitems*{20cfcafc-3ea4-43cc-97bc-b71435e3d186}*SharedItemsImports = 5
 		RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.projitems*{3ff67f13-c58e-4511-af51-8d02aa779112}*SharedItemsImports = 13
 		RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.projitems*{7197572b-9caa-4f88-bfdd-c616bcdf4c5a}*SharedItemsImports = 13
+		RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.projitems*{7ad829f6-b473-41b7-8ea9-7f7d6eb3e928}*SharedItemsImports = 5
+		RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.projitems*{8aa76477-3cfe-4200-9c62-705f80e535ab}*SharedItemsImports = 5
+		RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.projitems*{92266be7-7773-4e2b-9b9a-8d814725e62c}*SharedItemsImports = 5
+		RockLib.Diagnostics.ConfigTests\RockLib.Diagnostics.ConfigTests.projitems*{c10720e1-9402-4d35-9db3-0d877ad8d0f9}*SharedItemsImports = 5
+		RockLib.Diagnostics.UnitTests\RockLib.Diagnostics.UnitTests.projitems*{de66fc2c-cac9-42e2-b855-63b101ea9b81}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

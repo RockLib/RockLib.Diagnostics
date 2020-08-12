@@ -1,5 +1,5 @@
 version: 'RockLib.Diagnostics.{build}.0.0-ci'
-image: Visual Studio 2017
+image: Visual Studio 2019
 configuration: Release
 before_build:
 - ps: |
