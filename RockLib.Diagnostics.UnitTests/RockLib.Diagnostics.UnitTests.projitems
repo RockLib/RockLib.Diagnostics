@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)ConfigurationExtensions\CreateDiagnosticsSettingsTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleTraceListenerTests.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DebugTraceListenerTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tracing\ConfigureTraceTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tracing\GetTraceSourceTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Tracing\SettingsTests.cs" />
