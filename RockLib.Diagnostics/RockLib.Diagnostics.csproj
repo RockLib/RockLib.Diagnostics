@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.6;net462;net451</TargetFrameworks>
+    <TargetFrameworks>net5.0;netstandard2.0;netstandard1.6;net462;net451</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -28,10 +28,6 @@
     <None Include="..\LICENSE.md" Pack="true" PackagePath="" />
     <None Include="..\icon.png" Pack="true" PackagePath="" />
   </ItemGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.6'">
-    <DefineConstants>NETSTANDARD1_6</DefineConstants>
-  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="RockLib.Configuration" Version="2.4.4" />

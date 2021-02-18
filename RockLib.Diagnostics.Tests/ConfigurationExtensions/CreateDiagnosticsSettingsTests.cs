@@ -4,9 +4,6 @@ using RockLib.Diagnostics;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Xunit;
-#if NETCOREAPP1_1
-using DefaultTraceListener = RockLib.Diagnostics.DefaultTraceListener;
-#endif
 
 public class TheCreateDiagnosticsSettingsExtensionMethod
 {
