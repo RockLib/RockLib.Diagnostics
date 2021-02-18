@@ -2,9 +2,6 @@ using FluentAssertions;
 using RockLib.Diagnostics;
 using System.Diagnostics;
 using Xunit;
-#if NETCOREAPP1_1
-using DefaultTraceListener = RockLib.Diagnostics.DefaultTraceListener;
-#endif
 
 public partial class TheTracing
 {

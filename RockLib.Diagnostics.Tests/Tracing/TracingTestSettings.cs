@@ -2,9 +2,6 @@
 using RockLib.Diagnostics;
 using System.Collections.Generic;
 using System.Diagnostics;
-#if NETCOREAPP1_1
-using DefaultTraceListener=RockLib.Diagnostics.DefaultTraceListener;
-#endif
 
 internal static class TracingTestSettings
 {

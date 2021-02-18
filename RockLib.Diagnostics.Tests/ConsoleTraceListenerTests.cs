@@ -1,10 +1,8 @@
 ﻿using FluentAssertions;
-#if !NETCOREAPP1_1
 using Moq;
 using RockLib.Dynamic;
 using System;
 using System.IO;
-#endif
 using Xunit;
 
 namespace RockLib.Diagnostics.UnitTests
@@ -18,11 +16,9 @@ namespace RockLib.Diagnostics.UnitTests
 
             traceListener.Name.Should().Be("");
 
-#if !NETCOREAPP1_1
             TextWriter consoleWriter = traceListener.Unlock()._consoleWriter;
 
             consoleWriter.Should().BeSameAs(Console.Out);
-#endif
         }
 
         [Fact(DisplayName = "Constructor sets specified name and output")]
@@ -32,21 +28,17 @@ namespace RockLib.Diagnostics.UnitTests
 
             traceListener.Name.Should().Be("TestName");
 
-#if !NETCOREAPP1_1
             TextWriter consoleWriter = traceListener.Unlock()._consoleWriter;
 
             consoleWriter.Should().BeSameAs(Console.Error);
-#endif
         }
 
-
-#if !NETCOREAPP1_1
         [Fact(DisplayName = "Constructor throws if output parameter is invalid")]
         public void ConstructorSadPath()
         {
             Action act = () => new ConsoleTraceListener(output: (ConsoleTraceListener.Output)(-1));
 
-            act.Should().ThrowExactly<ArgumentException>().WithMessage("Output stream is not defined: -1.*output");
+            act.Should().ThrowExactly<ArgumentException>().WithMessage("Output stream is not defined: -1.*output*");
         }
 
         [Fact(DisplayName = "Write passes message to _consoleWriter.Write")]
@@ -76,6 +68,5 @@ namespace RockLib.Diagnostics.UnitTests
 
             mockTextWriter.Verify(m => m.WriteLine("Test message"), Times.Once());
         }
-#endif
     }
 }
