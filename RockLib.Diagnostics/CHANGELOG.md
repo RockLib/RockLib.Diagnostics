@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fixes bug in DebugTraceListener where nothing was ever actually written to debug.
 
+#### Changed
+
+- Updates RockLib.Configuration and RockLib.Configuration.ObjectFactory packages to latest versions, which include SourceLink.
+
 ----
 
 **Note:** Release notes in the above format are not available for earlier versions of

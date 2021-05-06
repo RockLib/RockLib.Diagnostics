@@ -37,8 +37,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="RockLib.Configuration" Version="2.5.1" />
-    <PackageReference Include="RockLib.Configuration.ObjectFactory" Version="1.6.7" />
+    <PackageReference Include="RockLib.Configuration" Version="2.5.2" />
+    <PackageReference Include="RockLib.Configuration.ObjectFactory" Version="1.6.8" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
   </ItemGroup>
 
