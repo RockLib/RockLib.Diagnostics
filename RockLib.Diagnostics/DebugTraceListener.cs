@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿#define DEBUG
+using System.Diagnostics;
 
 namespace RockLib.Diagnostics
 {
