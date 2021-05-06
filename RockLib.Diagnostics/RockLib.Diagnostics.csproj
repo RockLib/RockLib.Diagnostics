@@ -6,7 +6,7 @@
 
   <PropertyGroup>
     <PackageId>RockLib.Diagnostics</PackageId>
-    <PackageVersion>1.0.6</PackageVersion>
+    <PackageVersion>1.0.7</PackageVersion>
     <Authors>RockLib</Authors>
     <Description>Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
