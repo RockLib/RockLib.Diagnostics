@@ -13,7 +13,10 @@ namespace RockLib.Diagnostics
     /// Defines methods for configuring the <see cref="Trace"/> static class and retrieving
     /// <see cref="TraceSource"/> objects.
     /// </summary>
+#pragma warning disable CA1724
     public static class Tracing
+#pragma warning disable CA1724
+
     {
         /// <summary>
         /// Defines the name of the section underneath <see cref="Config.Root"/> that determine the default value
@@ -48,7 +51,7 @@ namespace RockLib.Diagnostics
         /// </remarks>
         public static DiagnosticsSettings Settings
         {
-            get => _settings.Value;
+            get => _settings.Value!;
             set => _settings.Value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
@@ -102,7 +105,7 @@ namespace RockLib.Diagnostics
             });
         }
 
-        private static DiagnosticsSettings GetDefaultDiagnosticsSettings() =>
-            Config.Root.GetCompositeSection(DiagnosticsUnderscoreSectionName, DiagnosticsSectionName).CreateDiagnosticsSettings();
+        private static DiagnosticsSettings? GetDefaultDiagnosticsSettings() =>
+            Config.Root!.GetCompositeSection(DiagnosticsUnderscoreSectionName, DiagnosticsSectionName).CreateDiagnosticsSettings();
     }
 }

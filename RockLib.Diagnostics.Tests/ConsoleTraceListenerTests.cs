@@ -9,8 +9,8 @@ namespace RockLib.Diagnostics.UnitTests
 {
     public class ConsoleTraceListenerTests
     {
-        [Fact(DisplayName = "Constructor sets default name and output")]
-        public void ConstructorHappyPath1()
+        [Fact]
+        public void ConstructorSetsDefaultNameAndOutput()
         {
             var traceListener = new ConsoleTraceListener();
 
@@ -19,10 +19,12 @@ namespace RockLib.Diagnostics.UnitTests
             TextWriter consoleWriter = traceListener.Unlock()._consoleWriter;
 
             consoleWriter.Should().BeSameAs(Console.Out);
+
+            traceListener.Dispose();
         }
 
-        [Fact(DisplayName = "Constructor sets specified name and output")]
-        public void ConstructorHappyPath2()
+        [Fact]
+        public void ConstructorSetsSpecifiedNameAndOutput()
         {
             var traceListener = new ConsoleTraceListener("TestName", ConsoleTraceListener.Output.StdErr);
 
@@ -31,18 +33,22 @@ namespace RockLib.Diagnostics.UnitTests
             TextWriter consoleWriter = traceListener.Unlock()._consoleWriter;
 
             consoleWriter.Should().BeSameAs(Console.Error);
+
+            traceListener.Dispose();
         }
 
-        [Fact(DisplayName = "Constructor throws if output parameter is invalid")]
-        public void ConstructorSadPath()
+        [Fact]
+        public void ConstructorTrowsIfOutputParameterIsInvalid()
         {
+#pragma warning disable CA1806 // Do not ignore method results
             Action act = () => new ConsoleTraceListener(output: (ConsoleTraceListener.Output)(-1));
+#pragma warning restore CA1806 // Do not ignore method results
 
             act.Should().ThrowExactly<ArgumentException>().WithMessage("Output stream is not defined: -1.*output*");
         }
 
-        [Fact(DisplayName = "Write passes message to _consoleWriter.Write")]
-        public void WriteHappyPath()
+        [Fact]
+        public void WritePassesMessage()
         {
             var traceListener = new ConsoleTraceListener();
 
@@ -53,10 +59,12 @@ namespace RockLib.Diagnostics.UnitTests
             traceListener.Write("Test message");
 
             mockTextWriter.Verify(m => m.Write("Test message"), Times.Once());
+
+            traceListener.Dispose();
         }
 
-        [Fact(DisplayName = "WriteLine passes message to _consoleWriter.WriteLine")]
-        public void WriteLineHappyPath()
+        [Fact]
+        public void WriteLinePassesMessage()
         {
             var traceListener = new ConsoleTraceListener();
 
@@ -67,6 +75,8 @@ namespace RockLib.Diagnostics.UnitTests
             traceListener.WriteLine("Test message");
 
             mockTextWriter.Verify(m => m.WriteLine("Test message"), Times.Once());
+
+            traceListener.Dispose();
         }
     }
 }

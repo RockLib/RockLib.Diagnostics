@@ -1,29 +1,28 @@
 ﻿using FluentAssertions;
-using RockLib.Diagnostics;
 using System;
 using Xunit;
 
-public partial class TheTracing
+namespace RockLib.Diagnostics.UnitTests.TracingTest
 {
-    public class SettingsProperty
+    public static class SettingsProperty
     {
         static SettingsProperty() => TracingTestSettings.Initialize();
+    }
 
-        public class AfterTheGetterIsCalled
+    public class AfterTheGetterIsCalled
+    {
+        static AfterTheGetterIsCalled() => TracingTestSettings.Initialize();
+
+        [Fact]
+        public void CallingTheSetterThrows()
         {
-            static AfterTheGetterIsCalled() => TracingTestSettings.Initialize();
+            var dummy = Tracing.Settings;
 
-            [Fact]
-            public void CallingTheSetterThrows()
-            {
-                var dummy = Tracing.Settings;
+            var ex = Assert.Throws<InvalidOperationException>(() =>
+                Tracing.Settings = new DiagnosticsSettings());
 
-                var ex = Assert.Throws<InvalidOperationException>(() =>
-                    Tracing.Settings = new DiagnosticsSettings());
-
-                ex.Message.Should().Be(
-                    "Setting the value of a Semimutable object is not permitted after it has been locked.");
-            }
+            ex.Message.Should().Be(
+                "Setting the value of a Semimutable object is not permitted after it has been locked.");
         }
     }
 }

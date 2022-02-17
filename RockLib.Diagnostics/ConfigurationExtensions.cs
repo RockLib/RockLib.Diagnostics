@@ -28,7 +28,7 @@ namespace RockLib.Diagnostics
         /// the abstract <see cref="TraceListener"/> class is <see cref="DefaultTraceListener"/>,
         /// and the default type for the abstract <see cref="TraceFilter"/> class is
         /// </remarks>
-        public static DiagnosticsSettings CreateDiagnosticsSettings(this IConfiguration configuration)
+        public static DiagnosticsSettings? CreateDiagnosticsSettings(this IConfiguration configuration)
         {
             var defaultTypes = new DefaultTypes
             {

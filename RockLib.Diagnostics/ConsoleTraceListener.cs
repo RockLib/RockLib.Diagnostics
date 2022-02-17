@@ -32,7 +32,7 @@ namespace RockLib.Diagnostics
         /// </summary>
         /// <param name="name">The name of the <see cref="ConsoleTraceListener"/>.</param>
         /// <param name="output">The type of output stream to use.</param>
-        public ConsoleTraceListener(string name = null, Output output = Output.StdOut)
+        public ConsoleTraceListener(string? name = null, Output output = Output.StdOut)
             : base(name)
         {
             switch (output)
@@ -41,7 +41,7 @@ namespace RockLib.Diagnostics
                     _consoleWriter = Console.Out;
                     break;
                 case Output.StdErr:
-                    _consoleWriter =  Console.Error;
+                    _consoleWriter = Console.Error;
                     break;
                 default:
                     throw new ArgumentException($"Output stream is not defined: {output}.", nameof(output));
@@ -52,14 +52,14 @@ namespace RockLib.Diagnostics
         /// Writes the specified message to console.
         /// </summary>
         /// <param name="message">A message to write.</param>
-        public override void Write(string message) =>
+        public override void Write(string? message) =>
             _consoleWriter.Write(message);
 
         /// <summary>
         /// Writes the specified message to console, followed by a line terminator.
         /// </summary>
         /// <param name="message">A message to write.</param>
-        public override void WriteLine(string message) =>
+        public override void WriteLine(string? message) =>
             _consoleWriter.WriteLine(message);
     }
 }

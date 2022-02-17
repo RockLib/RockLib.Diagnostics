@@ -1,12 +1,12 @@
 ﻿using FluentAssertions;
-using RockLib.Diagnostics;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Xunit;
 
-public partial class TheTracing
+namespace RockLib.Diagnostics.UnitTests.TracingTest
 {
+
     public class ConfigureTraceMethod
     {
         private static readonly bool InitialAutoFlush;
@@ -14,9 +14,11 @@ public partial class TheTracing
         private static readonly bool InitialUseGlobalLock;
         private static readonly IReadOnlyList<TraceListener> InitialTraceListeners;
 
+#pragma warning disable CA1810 // Initialize reference type static fields inline
         static ConfigureTraceMethod()
+#pragma warning restore CA1810 // Initialize reference type static fields inline
         {
-             TracingTestSettings.Initialize();
+            TracingTestSettings.Initialize();
 
             InitialAutoFlush = Trace.AutoFlush;
             InitialIndentSize = Trace.IndentSize;
