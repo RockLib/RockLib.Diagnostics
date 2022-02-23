@@ -1,27 +1,22 @@
 ﻿using FluentAssertions;
-using RockLib.Diagnostics;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Xunit;
 
-public partial class TheTracing
+namespace RockLib.Diagnostics.UnitTests.TracingTest
 {
+
     public class ConfigureTraceMethod
     {
-        private static readonly bool InitialAutoFlush;
-        private static readonly int InitialIndentSize;
-        private static readonly bool InitialUseGlobalLock;
-        private static readonly IReadOnlyList<TraceListener> InitialTraceListeners;
+        private static readonly bool InitialAutoFlush = Trace.AutoFlush;
+        private static readonly int InitialIndentSize = Trace.IndentSize;
+        private static readonly bool InitialUseGlobalLock = Trace.UseGlobalLock;
+        private static readonly IReadOnlyList<TraceListener> InitialTraceListeners = Trace.Listeners.Cast<TraceListener>().ToArray();
 
         static ConfigureTraceMethod()
         {
-             TracingTestSettings.Initialize();
-
-            InitialAutoFlush = Trace.AutoFlush;
-            InitialIndentSize = Trace.IndentSize;
-            InitialUseGlobalLock = Trace.UseGlobalLock;
-            InitialTraceListeners = Trace.Listeners.Cast<TraceListener>().ToArray();
+            TracingTestSettings.Initialize();
         }
 
         [Fact]

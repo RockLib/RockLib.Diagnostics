@@ -13,10 +13,10 @@ namespace RockLib.Diagnostics
         /// </summary>
         /// <param name="trace">Settings for configuring the <see cref="Trace"/> static class.</param>
         /// <param name="sources">A collection of <see cref="TraceSource"/> objects.</param>
-        public DiagnosticsSettings(TraceSettings trace = null, IReadOnlyList<TraceSource> sources = null)
+        public DiagnosticsSettings(TraceSettings? trace = null, IReadOnlyList<TraceSource>? sources = null)
         {
-            Trace = trace;
-            Sources = sources;
+            Trace = trace!;
+            Sources = sources!;
         }
 
         /// <summary>

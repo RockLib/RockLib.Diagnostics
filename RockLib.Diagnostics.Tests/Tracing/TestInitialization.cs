@@ -1,4 +1,7 @@
-﻿public partial class TheTracing
+﻿namespace RockLib.Diagnostics.UnitTests.TracingTest
 {
-    static TheTracing() => TracingTestSettings.Initialize();
+    public partial class TheTracing
+    {
+        static TheTracing() => TracingTestSettings.Initialize();
+    }
 }

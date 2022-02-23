@@ -5,18 +5,18 @@ namespace RockLib.Diagnostics.UnitTests
 {
     public class DebugTraceListenerTests
     {
-        [Fact(DisplayName = "Constructor sets default name")]
-        public void ConstructorHappyPath1()
+        [Fact]
+        public void ConstructorSetsDefaultName()
         {
-            var traceListener = new DebugTraceListener();
+            using var traceListener = new DebugTraceListener();
 
             traceListener.Name.Should().Be("");
         }
 
-        [Fact(DisplayName = "Constructor sets specified name")]
-        public void ConstructorHappyPath2()
+        [Fact]
+        public void ConstructorSetsSpecifiedName()
         {
-            var traceListener = new DebugTraceListener("TestName");
+            using var traceListener = new DebugTraceListener("TestName");
 
             traceListener.Name.Should().Be("TestName");
         }

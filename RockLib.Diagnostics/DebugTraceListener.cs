@@ -12,7 +12,7 @@ namespace RockLib.Diagnostics
         /// Initializes a new instance of the <see cref="DebugTraceListener"/> class.
         /// </summary>
         /// <param name="name">The name of the <see cref="DebugTraceListener"/>.</param>
-        public DebugTraceListener(string name = null)
+        public DebugTraceListener(string? name = null)
             : base(name)
         {
         }
@@ -21,14 +21,14 @@ namespace RockLib.Diagnostics
         /// Writes the specified message to debug.
         /// </summary>
         /// <param name="message">A message to write.</param>
-        public override void Write(string message) =>
+        public override void Write(string? message) =>
             Debug.Write(message);
 
         /// <summary>
         /// Writes the specified message to debug, followed by a line terminator.
         /// </summary>
         /// <param name="message">A message to write.</param>
-        public override void WriteLine(string message) =>
+        public override void WriteLine(string? message) =>
             Debug.WriteLine(message);
     }
 }

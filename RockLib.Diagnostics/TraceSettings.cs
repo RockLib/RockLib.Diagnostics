@@ -15,12 +15,12 @@ namespace RockLib.Diagnostics
         /// <param name="indentSize">The value for the <see cref="Trace"/> static class's <see cref="Trace.IndentSize"/> property.</param>
         /// <param name="useGlobalLock">The value for the <see cref="Trace"/> static class's <see cref="Trace.UseGlobalLock"/> property.</param>
         /// <param name="listeners">A collection of <see cref="TraceListener"/> objects for the <see cref="Trace"/> static class's <see cref="Trace.Listeners"/> property.</param>
-        public TraceSettings(bool autoFlush = false, int indentSize = 4, bool useGlobalLock = true, IReadOnlyList<TraceListener> listeners = null)
+        public TraceSettings(bool autoFlush = false, int indentSize = 4, bool useGlobalLock = true, IReadOnlyList<TraceListener>? listeners = null)
         {
             AutoFlush = autoFlush;
             IndentSize = indentSize;
             UseGlobalLock = useGlobalLock;
-            Listeners = listeners ?? new TraceListener[0];
+            Listeners = listeners ?? System.Array.Empty<TraceListener>();
         }
 
         /// <summary>
