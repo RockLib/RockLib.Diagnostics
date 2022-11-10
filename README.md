@@ -1,6 +1,8 @@
-# RockLib.Diagnostics [![Build status](https://ci.appveyor.com/api/projects/status/k7ojdrc1mwifri96?svg=true)](https://ci.appveyor.com/project/RockLib/rocklib-diagnostics)
+# RockLib.Diagnostics
 
-*Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.*
+Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.
+
+## Installation
 
 ```powershell
 PM> Install-Package RockLib.Diagnostics
@@ -20,7 +22,7 @@ The static `RockLib.Diagnostics.Tracing` class has two methods, `ConfigureTrace(
 
 All classes that write trace messages using the `System.Diagnostics.Trace` class should make a call to `RockLib.Diagnostics.Tracing.ConfigureTrace()` in their static constructor. It ensures that `Trace` has its `AutoFlush`, `IndentSize`, `UseGlobalLock`, and `Listeners` properties configured according to the `Tracing.Settings` property. Note that this method is thread-safe and can be called multiple times (only the first time calling it has any effect however).
 
-```c#
+```csharp
 using RockLib.Diagnostics;
 using System.Diagnostics;
 
@@ -48,7 +50,7 @@ The type of the `Tracing.Settings` property, `DiagnosticsSettings`, has two prop
 
 This property may be explicitly set at the beginning of an application. However, it cannot be set once already in use.
 
-```c#
+```csharp
 Tracing.Settings = new DiagnosticsSettings(
     trace: new TraceSettings(
         autoFlush: false,    // These are
@@ -84,7 +86,7 @@ Tracing.Settings = new DiagnosticsSettings(
 
 When not set explicitly, the `Settings` property value is automatically obtained as follows:
 
-```c#
+```csharp
 RockLib.Configuration.Config.Root
     .GetSection(RockLib.Diagnostics.Tracing.DiagnosticsSectionName)
     .CreateDiagnosticsSettings()
@@ -92,7 +94,7 @@ RockLib.Configuration.Config.Root
 
 The `CreateDiagnosticsSettings` extension method looks like this:
 
-```c#
+```csharp
 var defaultTypes = new DefaultTypes
 {
     { typeof(TraceListener), typeof(DefaultTraceListener) },
@@ -130,14 +132,13 @@ An `appsettings.json` file for an app with its Tracing automatically configured 
         }
     }
 }
-
 ```
 
 #### ASP.NET Core Applications
 
 In order to enable tracing automatically from configuration, ASP.NET Core applications need be sure to call `RockLib.Configuration.Config.SetCurrent(Microsoft.Extensions.Configuration.IConfiguration)` from their `Startup` class's constructor.
 
-```c#
+```csharp
 public Startup(IConfiguration configuration)
 {
     Configuration = configuration;
