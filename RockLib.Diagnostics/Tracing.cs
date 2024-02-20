@@ -1,11 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using RockLib.Configuration;
-using RockLib.Immutable;
-using RockLib.Threading;
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 
 namespace RockLib.Diagnostics
 {
@@ -16,8 +15,13 @@ namespace RockLib.Diagnostics
 #pragma warning disable CA1724
     public static class Tracing
 #pragma warning disable CA1724
-
     {
+        // Since we took out RockLib.Threading, we don't have access to SoftLock,
+        // but we really don't need it either. Essentially this is inlining what we need.
+        private const int _lockNotAcquired = 0;
+        private const int _lockAcquired = 1;
+        private static int _lock;
+
         /// <summary>
         /// Defines the name of the section underneath <see cref="Config.Root"/> that determine the default value
         /// of the <see cref="Settings"/> property.
@@ -30,12 +34,13 @@ namespace RockLib.Diagnostics
         /// </summary>
         public const string DiagnosticsUnderscoreSectionName = "rocklib_diagnostics";
 
-        private static readonly SoftLock _configureTraceLock = new SoftLock();
-
         private static readonly ConcurrentDictionary<string, TraceSource> _traceSources = new ConcurrentDictionary<string, TraceSource>();
 
-        private static readonly Semimutable<DiagnosticsSettings> _settings =
-            new Semimutable<DiagnosticsSettings>(GetDefaultDiagnosticsSettings);
+        // We no longer have Semimutable...but we don't need it either,
+        // this should be sufficient.
+        private static bool _settingsSet;
+        private static DiagnosticsSettings? _settings;
+
 
         /// <summary>
         /// Gets or sets the <see cref="DiagnosticsSettings"/> used internally by the <see cref="ConfigureTrace"/>
@@ -49,10 +54,27 @@ namespace RockLib.Diagnostics
         /// <see cref="ConfigurationExtensions.CreateDiagnosticsSettings(IConfiguration)"/>
         /// extension method to the sub-section.
         /// </remarks>
-        public static DiagnosticsSettings Settings
+        public static DiagnosticsSettings? Settings
         {
-            get => _settings.Value!;
-            set => _settings.Value = value ?? throw new ArgumentNullException(nameof(value));
+            get
+            {
+                if (!_settingsSet)
+                {
+                    _settings = GetDefaultDiagnosticsSettings();
+                    _settingsSet = true;
+                }
+                return _settings;
+            }
+            set
+            {
+                if (_settingsSet)
+                {
+                    throw new InvalidOperationException("Settings have already been set.");
+                }
+
+                _settings = value;
+                _settingsSet = true;
+            }
         }
 
         /// <summary>
@@ -63,9 +85,9 @@ namespace RockLib.Diagnostics
         /// </summary>
         public static void ConfigureTrace()
         {
-            if (!_configureTraceLock.TryAcquire()) return;
+            if (!(Interlocked.Exchange(ref _lock, _lockAcquired) == _lockNotAcquired)) return;
 
-            if (Settings.Trace != null)
+            if (Settings?.Trace is not null)
             {
                 var traceSettings = Settings.Trace;
 
@@ -99,7 +121,7 @@ namespace RockLib.Diagnostics
         {
             return _traceSources.GetOrAdd(name, sourceName =>
             {
-                if (Settings.Sources?.FirstOrDefault(s => s.Name == sourceName) is TraceSource traceSource)
+                if (Settings?.Sources?.FirstOrDefault(s => s.Name == sourceName) is TraceSource traceSource)
                     return traceSource;
                 return new TraceSource(name);
             });
