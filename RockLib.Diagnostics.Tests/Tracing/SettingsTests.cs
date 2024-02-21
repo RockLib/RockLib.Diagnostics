@@ -21,8 +21,7 @@ namespace RockLib.Diagnostics.UnitTests.TracingTest
             var ex = Assert.Throws<InvalidOperationException>(() =>
                 Tracing.Settings = new DiagnosticsSettings());
 
-            ex.Message.Should().Be(
-                "Setting the value of a Semimutable object is not permitted after it has been locked.");
+            ex.Message.Should().Be("Settings have already been set.");
         }
     }
 }

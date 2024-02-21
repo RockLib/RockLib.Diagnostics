@@ -10,7 +10,7 @@ namespace RockLib.Diagnostics.UnitTests.ConfigTest
         public void HasAValueCreatedFromConfigRoot()
         {
             Tracing.Settings.Should().NotBeNull();
-            Tracing.Settings.Trace.AutoFlush.Should().Be(true);
+            Tracing.Settings!.Trace.AutoFlush.Should().Be(true);
             Tracing.Settings.Trace.IndentSize.Should().Be(2);
             Tracing.Settings.Trace.UseGlobalLock.Should().Be(false);
 
