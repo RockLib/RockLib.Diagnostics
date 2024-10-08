@@ -103,7 +103,7 @@ var defaultTypes = new DefaultTypes
 return configuration.Create<DiagnosticsSettings>(defaultTypes);
 ```
 
-See the [RockLib.Configuration.ObjectFactory](https://github.com/RockLib/RockLib.Configuration/tree/develop/RockLib.Configuration.ObjectFactory) project for details on config formatting.
+See the [RockLib.Configuration.ObjectFactory](https://github.com/RockLib/RockLib.Configuration/tree/main/RockLib.Configuration.ObjectFactory) project for details on config formatting.
 
 An `appsettings.json` file for an app with its Tracing automatically configured might look like this (note that this configuration and the programmatic example above produce the same settings):
 
