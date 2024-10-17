@@ -27,7 +27,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
-		<PackageReference Include="RockLib.Configuration" Version="4.0.1" />
+		<PackageReference Include="RockLib.Configuration" Version="4.0.3" />
 		<PackageReference Include="RockLib.Configuration.ObjectFactory" Version="3.0.0" />
 	</ItemGroup>
 </Project>
