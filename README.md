@@ -2,6 +2,8 @@
 
 Makes configuring tracing easy and standardized for .NET Core, .NET Standard, and .NET Framework.
 
+> Note: The 4.0.0 release of this library will be the final version with upgrades and changes. Bug fixes will continue to be released as needed.
+
 ## Installation
 
 ```powershell

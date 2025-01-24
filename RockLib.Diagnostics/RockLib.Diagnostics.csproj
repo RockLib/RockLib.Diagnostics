@@ -11,9 +11,9 @@
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<PackageReleaseNotes>A changelog is available at https://github.com/RockLib/RockLib.Diagnostics/blob/main/RockLib.Diagnostics/CHANGELOG.md.</PackageReleaseNotes>
 		<PackageTags>RockLib Trace TraceSource Configuration</PackageTags>
-		<PackageVersion>3.0.2</PackageVersion>
+		<PackageVersion>4.0.0</PackageVersion>
 		<PublishRepositoryUrl>True</PublishRepositoryUrl>
-		<Version>3.0.2</Version>
+		<Version>4.0.0</Version>
 	</PropertyGroup>
 	<PropertyGroup>
 		<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(PackageId).xml</DocumentationFile>
@@ -26,7 +26,6 @@
 		<None Include="..\icon.png" Pack="true" PackagePath="" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
 		<PackageReference Include="RockLib.Configuration" Version="4.0.3" />
 		<PackageReference Include="RockLib.Configuration.ObjectFactory" Version="3.0.0" />
 	</ItemGroup>
