@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Moq;
-using RockLib.Dynamic;
 using System;
 using System.IO;
+using System.Reflection;
 using Xunit;
 
 namespace RockLib.Diagnostics.UnitTests
@@ -16,7 +16,9 @@ namespace RockLib.Diagnostics.UnitTests
 
             traceListener.Name.Should().Be("");
 
-            TextWriter consoleWriter = traceListener.Unlock()._consoleWriter;
+            var consoleWriter = (TextWriter)typeof(ConsoleTraceListener)
+                .GetField("_consoleWriter", BindingFlags.Instance | BindingFlags.NonPublic)!
+                .GetValue(traceListener)!;
 
             consoleWriter.Should().BeSameAs(Console.Out);
 
@@ -30,7 +32,9 @@ namespace RockLib.Diagnostics.UnitTests
 
             traceListener.Name.Should().Be("TestName");
 
-            TextWriter consoleWriter = traceListener.Unlock()._consoleWriter;
+            var consoleWriter = (TextWriter)typeof(ConsoleTraceListener)
+                .GetField("_consoleWriter", BindingFlags.Instance | BindingFlags.NonPublic)!
+                .GetValue(traceListener)!;
 
             consoleWriter.Should().BeSameAs(Console.Error);
 
@@ -54,7 +58,9 @@ namespace RockLib.Diagnostics.UnitTests
 
             var mockTextWriter = new Mock<TextWriter>();
 
-            traceListener.Unlock()._consoleWriter = mockTextWriter.Object;
+            var consoleWriter = typeof(ConsoleTraceListener)
+                .GetField("_consoleWriter", BindingFlags.Instance | BindingFlags.NonPublic)!;
+            consoleWriter.SetValue(traceListener, mockTextWriter.Object);
 
             traceListener.Write("Test message");
 
@@ -70,7 +76,9 @@ namespace RockLib.Diagnostics.UnitTests
 
             var mockTextWriter = new Mock<TextWriter>();
 
-            traceListener.Unlock()._consoleWriter = mockTextWriter.Object;
+            var consoleWriter = typeof(ConsoleTraceListener)
+                .GetField("_consoleWriter", BindingFlags.Instance | BindingFlags.NonPublic)!;
+            consoleWriter.SetValue(traceListener, mockTextWriter.Object);
 
             traceListener.WriteLine("Test message");
 
